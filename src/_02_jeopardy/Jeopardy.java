@@ -33,7 +33,8 @@ import game_tools.Sound;
 public class Jeopardy implements ActionListener {
 	private JButton firstButton;
 	private JButton secondButton;
-	private JButton thirdButton, fourthButton;
+	private JButton thirdButton;
+	private JButton fourthButton;
 	private JButton fithButton;
 	private JPanel quizPanel;
 	private int score = 0;
@@ -66,17 +67,25 @@ public class Jeopardy implements ActionListener {
 		quizPanel.add(firstButton);
 		// 8. Write the code to complete the createButton() method below. Check that your
 		// game looks like Figure 1 in the Jeopardy Handout - http://bit.ly/1bvnvd4.
-		
+
 		// 9. Use the secondButton variable to hold a button using the createButton
 		// method
 		secondButton = createButton("400");
 		// 10. Add the secondButton to the quizPanel
 		quizPanel.add(secondButton);
+		
+		thirdButton = createButton("600");
+		fourthButton = createButton("800");
+		fithButton = createButton("1000");
+		quizPanel.add(thirdButton);
+		quizPanel.add(fourthButton);
+		quizPanel.add(fithButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
 		firstButton.addActionListener(this);
 		secondButton.addActionListener(this);
 		thirdButton.addActionListener(this);
 		fourthButton.addActionListener(this);
+		fithButton.addActionListener(this);
 		// 12. Write the code to complete the actionPerformed() method below
 		
 		// 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
@@ -104,7 +113,7 @@ public class Jeopardy implements ActionListener {
 		// Set the text of the button to the dollarAmount
 		button.setText(dollarAmount);
 		// Increment the buttonCount (this should make the layout vertical)
-		buttonCount = 2;
+		buttonCount = 5;
 		// Return your new button instead of the temporary button
 		return button;
 	}
@@ -113,12 +122,11 @@ public class Jeopardy implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 		
 		// Remove this temporary message after testing:
-		JOptionPane.showMessageDialog(null, "pressed " + ((JButton) e.getSource()).getText() + " button");
-
+		
 		JButton buttonPressed = (JButton) e.getSource();
 		// If the buttonPressed was the firstButton
-		if(e.getSource() == firstButton) {
-			askQuestion("Test", "Test", 200);
+		if(buttonPressed == firstButton) {
+			askQuestion("Is the world round or flat?", "flat", 200);
 			firstButton.setText(null);
 
 		}
@@ -127,9 +135,21 @@ public class Jeopardy implements ActionListener {
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
 
 		// If the buttonPressed was the secondButton
-		if(e.getSource() == secondButton) {
-			askQuestion("Test", "Test", 400);
+		if(buttonPressed == secondButton) {
+			askQuestion("What is the name of the villian in Harry Potter?", "Voldemort", 400);
 			secondButton.setText(null);
+		}
+		if(buttonPressed == thirdButton) {
+			askQuestion("What are Iron Man's last words?", "I am Iron Man", 600);
+			thirdButton.setText(null);
+		}
+		if(buttonPressed == fourthButton) {
+			askQuestion("What is the highest grossing movie ever?", "Avatar", 800);
+			fourthButton.setText(null);
+		}
+		if(buttonPressed == fithButton) {
+			askQuestion("What is the most popular dog breed of 2023?", "French Bulldog", 1000);
+			fithButton.setText(null);
 		}
 	}
 			

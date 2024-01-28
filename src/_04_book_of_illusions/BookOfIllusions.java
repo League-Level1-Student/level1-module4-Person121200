@@ -11,29 +11,43 @@ import java.net.URL;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
  
 /** We’re going to make a slideshow of cool optical illusions. When the user clicks on an illusion, a new one will be loaded. **/
 
 public class BookOfIllusions extends MouseAdapter {
-
+	JFrame frame = new JFrame();
+	JLabel label;
 	// 1. Make a JFrame variable and initialize it using "new JFrame()"
 
 	public void run() {
 		// 2. make the frame visible
+		frame.setVisible(true);
 		// 3. set the size of the frame
+		frame.setSize(500, 500);
 		// 4. find 2 images and save them to your project’s _06_book_of_illusions folder
 		// 5. make a variable to hold the location of your image. e.g. "illusion.jpg"
+		String flowers = "flowers.jpeg";
+		String tree = "tree.jpeg";
 		// 6. create a variable of type "JLabel" but don’t initialize it yet
 		// 7. use the "loadImage..." methods below to initialize your JLabel
+		label = loadImage (flowers);
+		frame.add(label);
 		// 8. add your JLabel to the frame
 		// 9. call the pack() method on the frame
+		frame.pack();
 		// 10. add a mouse listener to your frame (hint: use *this*)
+		frame.addMouseListener(this);
 	}
 
 	public void mousePressed(MouseEvent e) {
 		// 11. Print "clicked!" to the console when the mouse is pressed
+		if(e.getSource() == frame) {
+			System.out.println("clicked!");
+		}
 		// 12. remove everything from the frame that was added earlier
+		frame.remove(label);
 		// 13. load a new image like before (this is more than one line of code)
 		// 14. pack the frame
 	}
