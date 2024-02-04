@@ -5,9 +5,11 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import game_tools.Sound;
@@ -28,7 +30,7 @@ public class FortuneTeller extends JPanel implements Runnable, MouseListener {
         // 3. Complete the begin() method in the FortuneTellerRunner class
         
         // 4. add a mouse listener to the frame
-        
+        frame.addMouseListener(this);
     }
 
     @Override
@@ -37,22 +39,38 @@ public class FortuneTeller extends JPanel implements Runnable, MouseListener {
         int mouseY = e.getY();
         
         // 5. Print the mouseX variable
-        
+        System.out.println(mouseX +" "+ mouseY);
+
         // 6. Add the mouseY variable to the previous line so that it prints out too (no new line)
         
         // 7. Adjust your secret location co-ordinates here:
-        int secretLocationX = 0;
-        int secretLocationY = 0;
+        int secretLocationX = 278;
+        int secretLocationY = 361;
         
         // If the mouse co-ordinates and secret location are close, we'll let them ask a question.
         if (areClose(mouseX, secretLocationX) && areClose(mouseY, secretLocationY)) {
             // 8. Find a spooky sound and put it in your _05_fortune_teller package (freesound.org)
             //    play("creepy-noise.wav");
-            
+        	 play("creepy-noise.wav");
             // 9. Play the sound
             
             // 10. Insert your completed Magic 8 ball code here
-            
+        			JOptionPane.showInputDialog("Ask a Yes or No question' here:");
+        			int number = new Random().nextInt(4);
+        			
+        			if(number == 0) {
+        				JOptionPane.showMessageDialog(null, "Yes");
+        			}
+        			if(number == 1) {
+        				JOptionPane.showMessageDialog(null, "No");
+        			}
+        			if(number == 2) {
+        				JOptionPane.showMessageDialog(null, "Maybe you should ask Google");
+        			}
+        			if(number == 3) {
+        				JOptionPane.showMessageDialog(null, "Please ask again later");
+        			}
+        		
         }
 
     }

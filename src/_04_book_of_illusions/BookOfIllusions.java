@@ -13,6 +13,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
  
 /** We’re going to make a slideshow of cool optical illusions. When the user clicks on an illusion, a new one will be loaded. **/
 
@@ -30,9 +31,12 @@ public class BookOfIllusions extends MouseAdapter {
 		// 5. make a variable to hold the location of your image. e.g. "illusion.jpg"
 		String flowers = "flowers.jpeg";
 		String tree = "tree.jpeg";
+
+
 		// 6. create a variable of type "JLabel" but don’t initialize it yet
 		// 7. use the "loadImage..." methods below to initialize your JLabel
-		label = loadImage (flowers);
+		label = loadImageFromComputer(flowers);
+		label = loadImageFromComputer(tree);
 		frame.add(label);
 		// 8. add your JLabel to the frame
 		// 9. call the pack() method on the frame
@@ -49,6 +53,10 @@ public class BookOfIllusions extends MouseAdapter {
 		// 12. remove everything from the frame that was added earlier
 		frame.remove(label);
 		// 13. load a new image like before (this is more than one line of code)
+		String rock = "rock.jpeg";
+		label = loadImageFromComputer(rock);
+		frame.add(label);
+		frame.pack();
 		// 14. pack the frame
 	}
 
