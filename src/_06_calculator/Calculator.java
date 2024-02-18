@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 
 public class Calculator implements ActionListener{
 	JFrame frame = new JFrame();
@@ -16,15 +17,19 @@ public class Calculator implements ActionListener{
 	JButton sub = new JButton("sub");
 	JButton mul = new JButton("mul");
 	JButton div = new JButton("div");
-	JTextField input1 = new JTextField();
-	JTextField input2 = new JTextField();
-	Double input1AsDouble = Double.parseDouble(input1.getText());
-	Double input2AsDouble = Double.parseDouble(input2.getText());
+	JTextField input1 = new JTextField(5);
+	JTextField input2 = new JTextField(5);
+	JTextPane answer1 = new JTextPane();
+	
 
 
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()== add) {
+		Double input1AsDouble = Double.parseDouble(input1.getText());
+		Double input2AsDouble = Double.parseDouble(input2.getText());
+		
+		if(e.getSource() == add) {
 			answer = input1AsDouble+input2AsDouble;
+
 		}
 		if(e.getSource()== sub) {
 			answer = input1AsDouble-input2AsDouble;
@@ -35,7 +40,8 @@ public class Calculator implements ActionListener{
 		if(e.getSource()== div) {
 			answer = input1AsDouble/input2AsDouble;
 		}
-		
+		answer1.setText(" = " + answer);
+	
 	}
 
 	public void showButton() {
@@ -47,9 +53,15 @@ public class Calculator implements ActionListener{
 		buttons.add(mul);
 		buttons.add(div);
 		text.add(buttons);
-		text.add(buttons);
+		text.add(answer1);
 		frame.setVisible(true);
+		add.addActionListener(this);
+		sub.addActionListener(this);
+		mul.addActionListener(this);
+		div.addActionListener(this);
+		frame.setTitle("Calculator");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		frame.pack();
 		
 	}
